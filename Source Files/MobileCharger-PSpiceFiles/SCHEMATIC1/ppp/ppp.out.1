@@ -1,0 +1,54 @@
+
+**** 07/20/21 13:56:28 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ppp"  [ E:\Semester 6\PE LAB\LAB09 Open Ended\OPEN-PSpiceFiles\SCHEMATIC1\ppp.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "ppp.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\faiza\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 40ms 0 0.01 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source OPEN
+V_V3         N10975 0  AC 0
++SIN 0 230 50 0 0 0
+C_C1         0 N11683  1000uF  TC=0,0 
+D_D2         0 N11747 D1N4002 
+D_D4         0 N11751 D1N4002 
+D_D3         N11751 N11683 D1N4002 
+R_R1         0 N11683  10 TC=0,0 
+D_D1         N11747 N11683 D1N4002 
+X_TX1    N10975 0 N11747 N11751 SCHEMATIC1_TX1 
+
+.subckt SCHEMATIC1_TX1 1 2 3 4  
+K_TX1         L1_TX1 L2_TX1 1
+L1_TX1         1 2 424.45H
+L2_TX1         3 4 0.1H
+.ends SCHEMATIC1_TX1
+
+**** RESUMING ppp.cir ****
+.END
+
+ERROR(ORPSIM-15143): Voltage source and/or inductor loop involving V_V3. You may break the loop by adding a series resistance
+
